@@ -5,7 +5,7 @@ class ControleurNavire{
   private $vue;
  
 	public function __construct(){
-		$this->modele=new Dao();
+		$this->modele = new Dao();
 		$this->vue = new Vue();
 	}
 
