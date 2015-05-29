@@ -159,3 +159,7 @@ h1, h2, h3 {
 	margin-top: 3em;
 	margin-bottom: 3em;
 }
+
+label {
+	color: white;
+}
