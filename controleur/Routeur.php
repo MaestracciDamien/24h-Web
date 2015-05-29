@@ -21,27 +21,31 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 
 		public function router()
 		{
-			if (isset($_GET["ajout"])) {
-		
-			}
 
-			elseif (isset($_POST["create"])) {				
+			if (isset($_GET["insc"])) {
 
-			}
-			elseif(isset($_POST['affichage'])) {
-				
-			}
+				if (isset($_GET["type"])) {
 
-			elseif (isset($_GET["recherche"])) {
-				
-			}
-			elseif (isset($_GET["equipe"])) {
-				
-			}
-			elseif (isset($_GET["projet"])) {
-				
-			}
-			elseif (isset($_GET["contact"])) {
+					if ($_GET["type"] == 1) {
+						$this->affichage->inscription_comp();
+					}
+
+					elseif ($_GET["type"] == 2) {
+						$this->affichage->inscription_client();
+					}
+
+					elseif ($_GET["type"] == 3) {
+						$this->affichage->inscription_agent();
+					}
+
+					else {
+						$this->affichage->index();
+					}
+				}
+
+				else {
+					$this->affichage->index();
+				}					
 				
 			}
 
