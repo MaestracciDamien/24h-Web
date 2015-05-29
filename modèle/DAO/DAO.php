@@ -1,8 +1,9 @@
 <?php
 require_once "ConnexionException.php";
 require_once "TableAccesException.php";
+require_once  __DIR__."/../bean/Comp.php";
+require_once  __DIR__."/../bean/Navire.php";
 require_once  __DIR__."/../Bean/Charge.php";
-
 
 class Dao
 {  
@@ -45,22 +46,6 @@ class Dao
 		$this->deconnection;
 	}	
 
-	public function deleteCharge($id){
-
-		try{
-			$this->connexion();
-		}catch (ConnexionException $e){
-			print($e->afficher());
-		}
-		try{
-			$delete = $this->connexion->prepare('DELETE FROM Charge Where id= ?');
-		$delete->execute(array($id));
-		}catch (TableAccesException $e){
-			print($e->afficher());
-		}
-		$this->deconnexion();
-	}
-
 	public function getCharge($id){
 		$res = null;
 		try{
@@ -84,10 +69,26 @@ class Dao
 		}
 		$this->deconnexion();
 		return $res;
-
 	}
 
-	public function getAllCharge($id){
+
+	public function addNavire($id,$nom,$evp,$id_comp){
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try{
+			$add = $this->connexion->prepare('INSERT INTO 24H_NAVIRE (ID, EVP, NOM, ID_COMP) VALUES (?, ?, ?, ?)');
+	    	$add->execute(array($id,$evp,$nom,$id_comp));   	
+		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+	}
+
+
+	public function getComp($id){
 		$res = array();
 		try{
 			$this->connexion();
@@ -95,17 +96,73 @@ class Dao
 			print($e->afficher());
 		}
 		try{
-			$charge = $this->connexion->prepare('SELECT * FROM Charge WHERE id = ?');
-			$charge->execute(array($id));
-			while($tabCharge = $charge->fetch()){
-				$objet = new Charge(
-						$tabCharge['id'],
-						$tabCharge['id_escale'],
-						$tabCharge['id_cont'],
-						$tabCharge['decharge']
-				};
-				array_push($res,$objet);
+		  	$navires = $this->connexion->query('SELECT * FROM 24H_NAVIRE');
+			while ($donnees = $navires->fetch())
+			{
+				array_push($res, new Navire(
+						$donnees['ID'], 
+						$donnees['NOM'], 
+						$donnees['EVP'], 
+						$donnees['ID_COMP'] 
+					));
+			}
+		  	$comp = $this->connexion->prepare('SELECT * FROM 24H_COMP WHERE id = ?');
+	    	$comp->execute(array($id));	    	
+	    	if($tabComp = $comp->fetch()){
+	    		array_push($res, new Comp(
+	    				$tabComp['ID'], 
+						$tabComp['NOM'], 
+						$tabComp['ADRESSE'], 
+						$tabComp['PAYS']
+					));
+	    	}			
+		}catch (TableAccesException $e){
+			print($e->afficher());
 		}
+		$this->deconnexion();
+		return $res;
+	}
+
+	public function deleteComp($id){
+			try{
+				$this->connexion();
+			}catch (ConnexionException $e){
+				print($e->afficher());
+			}
+			try{
+				$delete = $this->connexion->prepare('DELETE FROM 24H_COMP WHERE id = ?');
+		    	$delete->execute(array($id));   	
+			}catch (TableAccesException $e){
+				print($e->afficher());
+			}
+			$this->deconnexion();
+		}
+	}
+
+
+	public function addComp($nom, $adresse, $pays){
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try{
+			$add = $this->connexion->prepare('INSERT INTO 24H_COMP (nom, adresse, pays) 
+				VALUES (?, ?, ?)');
+	    	$add->execute(array($nom, $adresse, $pays));   	
+		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_NAVIRE WHERE ID = ?');
+	    	$navire->execute(array($id));	    	
+	    	if($ = $navire->fetch()){
+	    		$res = new Navire(
+						$donnees['ID'], 
+						$donnees['NOM'], 
+						$donnees['EVP'], 
+						$donnees['ID_COMP'] 
+					);
+	    	}			
+			$add = $this->connexion->prepare('INSERT INTO 24H_COMP (nom, adresse, pays) 
+				VALUES (?, ?, ?)');
+	    	$add->execute(array($nom, $adresse, $pays));
 		}catch (TableAccesException $e){
 			print($e->afficher());
 		}
@@ -114,38 +171,48 @@ class Dao
 	}
 
 
-	public function addClient($id, $nom){
+	public function addNavire($id,$nom,$evp,$id_comp){
 		try{
 			$this->connexion();
 		}catch (ConnexionException $e){
 			print($e->afficher());
 		}
 		try{
-			$michel = $this->connexion->prepare('INSERT INTO Client (id, nom) VALUES (?, ?)');
-			$michel->execute(array($id, $nom));
-		}catch (TableAccesException $e){
-			print($e->afficher());
-		}
-		$this->deconnection;
-	}	
-
-	public function deleteClient($id){
-
-		try{
-			$this->connexion();
-		}catch (ConnexionException $e){
-			print($e->afficher());
-		}
-		try{
-			$delete = $this->connexion->prepare('DELETE FROM Client Where id= ?');
-		$delete->execute(array($id));
+			$add = $this->connexion->prepare('INSERT INTO 24H_NAVIRE (ID, EVP, NOM, ID_COMP) VALUES (?, ?, ?, ?)');
+	    	$add->execute(array($id,$evp,$nom,$id_comp));   	
 		}catch (TableAccesException $e){
 			print($e->afficher());
 		}
 		$this->deconnexion();
 	}
 
-	public function getClient($id){
+
+	public function getListeNavires(){
+		$res = array();
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try{
+		  	$navires = $this->connexion->query('SELECT * FROM 24H_NAVIRE');
+			while ($donnees = $navires->fetch())
+			{
+				array_push($res, new Navire(
+						$donnees['ID'], 
+						$donnees['NOM'], 
+						$donnees['EVP'], 
+						$donnees['ID_COMP'] 
+					));
+			}
+		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
+	}
+
+	public function getNavire($id){
 		$res = null;
 		try{
 			$this->connexion();
@@ -153,23 +220,24 @@ class Dao
 			print($e->afficher());
 		}
 		try{
-			$c = $this->connexion->prepare('SELECT * FROM Client WHERE id = ?');
-			$c->execute(array($id));
-			if($tabC = $c->fetch()){
-				$res = new Client(
-						$tabC['id'],
-						$tabC['nom']
-				};
-		}
+		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_NAVIRE WHERE ID = ?');
+	    	$navire->execute(array($id));	    	
+	    	if($ = $navire->fetch()){
+	    		$res = new Navire(
+						$donnees['ID'], 
+						$donnees['NOM'], 
+						$donnees['EVP'], 
+						$donnees['ID_COMP'] 
+					);
+	    	}
 		}catch (TableAccesException $e){
 			print($e->afficher());
 		}
 		$this->deconnexion();
 		return $res;
-
 	}
 
-	public function getAllClient($id){
+	public function getListeNaviresCompagnie($id_comp){
 		$res = array();
 		try{
 			$this->connexion();
@@ -177,15 +245,17 @@ class Dao
 			print($e->afficher());
 		}
 		try{
-			$c = $this->connexion->prepare('SELECT * FROM Client WHERE id = ?');
-			$c->execute(array($id));
-			while($tabC = $c->fetch()){
-				$objet = new Client(
-						$tabCharge['id'],
-						$tabCharge['nom']
-				};
-				array_push($res,$objet);
-		}
+		  	$navires = $this->connexion->prepare('SELECT * FROM 24H_NAVIRE where ID_COMP = ?');
+		  	$navires->execute(array($id_comp));
+			while ($donnees = $navires->fetch())
+			{
+				array_push($res, new Navire(
+						$donnees['ID'], 
+						$donnees['NOM'], 
+						$donnees['EVP'], 
+						$donnees['ID_COMP'] 
+					));
+			}
 		}catch (TableAccesException $e){
 			print($e->afficher());
 		}

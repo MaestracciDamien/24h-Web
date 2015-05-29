@@ -1,8 +1,12 @@
 <?php
 require_once "ConnexionException.php";
 require_once "TableAccesException.php";
+<<<<<<< HEAD
 require_once  __DIR__."/../Bean/Charge.php";
 
+=======
+require_once  __DIR__."/../bean/Comp.php";
+>>>>>>> cc1afa02f0c987d8dc616fb7805b05f44f285b1d
 
 class Dao
 {  
@@ -29,6 +33,7 @@ class Dao
 	public function deconnexion(){
 	  	$this->connexion = null;
 	}
+<<<<<<< HEAD
 
 	public function addCharge($id, $id_escale, $id_cont, $decharge){
 		try{
@@ -47,20 +52,36 @@ class Dao
 
 	public function deleteCharge($id){
 
+=======
+<<<<<<< Updated upstream
+
+	public function getComp($id){
+=======
+<<<<<<< HEAD
+}
+
+	public function addNavire($id,$nom,$evp,$id_comp){
+>>>>>>> cc1afa02f0c987d8dc616fb7805b05f44f285b1d
 		try{
 			$this->connexion();
 		}catch (ConnexionException $e){
 			print($e->afficher());
 		}
 		try{
+<<<<<<< HEAD
 			$delete = $this->connexion->prepare('DELETE FROM Charge Where id= ?');
 		$delete->execute(array($id));
+=======
+			$add = $this->connexion->prepare('INSERT INTO 24H_NAVIRE (ID, EVP, NOM, ID_COMP) VALUES (?, ?, ?, ?)');
+	    	$add->execute(array($id,$evp,$nom,$id_comp));   	
+>>>>>>> cc1afa02f0c987d8dc616fb7805b05f44f285b1d
 		}catch (TableAccesException $e){
 			print($e->afficher());
 		}
 		$this->deconnexion();
 	}
 
+<<<<<<< HEAD
 	public function getCharge($id){
 		$res = null;
 		try{
@@ -88,6 +109,15 @@ class Dao
 	}
 
 	public function getAllCharge($id){
+=======
+
+		public function getListeNavires(){
+=======
+
+	public function getComp($id){
+>>>>>>> origin/master
+>>>>>>> Stashed changes
+>>>>>>> cc1afa02f0c987d8dc616fb7805b05f44f285b1d
 		$res = array();
 		try{
 			$this->connexion();
@@ -95,6 +125,7 @@ class Dao
 			print($e->afficher());
 		}
 		try{
+<<<<<<< HEAD
 			$charge = $this->connexion->prepare('SELECT * FROM Charge WHERE id = ?');
 			$charge->execute(array($id));
 			while($tabCharge = $charge->fetch()){
@@ -106,6 +137,37 @@ class Dao
 				};
 				array_push($res,$objet);
 		}
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+		  	$navires = $this->connexion->query('SELECT * FROM 24H_NAVIRE');
+			while ($donnees = $navires->fetch())
+			{
+				array_push($res, new Navire(
+						$donnees['ID'], 
+						$donnees['NOM'], 
+						$donnees['EVP'], 
+						$donnees['ID_COMP'] 
+					));
+			}
+=======
+>>>>>>> Stashed changes
+		  	$comp = $this->connexion->prepare('SELECT * FROM 24H_COMP WHERE id = ?');
+	    	$comp->execute(array($id));	    	
+	    	if($tabComp = $comp->fetch()){
+	    		array_push($res, new Comp(
+	    				$tabComp['ID'], 
+						$tabComp['NOM'], 
+						$tabComp['ADRESSE'], 
+						$tabComp['PAYS']
+					));
+	    	}			
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
+>>>>>>> cc1afa02f0c987d8dc616fb7805b05f44f285b1d
 		}catch (TableAccesException $e){
 			print($e->afficher());
 		}
@@ -113,6 +175,7 @@ class Dao
 		return $res;
 	}
 
+<<<<<<< HEAD
 
 	public function addClient($id, $nom){
 		try{
@@ -147,12 +210,41 @@ class Dao
 
 	public function getClient($id){
 		$res = null;
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+	public function getNavire($id){
+		$res = null;
+=======
+>>>>>>> Stashed changes
+	public function deleteComp($id){
+			try{
+				$this->connexion();
+			}catch (ConnexionException $e){
+				print($e->afficher());
+			}
+			try{
+				$delete = $this->connexion->prepare('DELETE FROM 24H_COMP WHERE id = ?');
+		    	$delete->execute(array($id));   	
+			}catch (TableAccesException $e){
+				print($e->afficher());
+			}
+			$this->deconnexion();
+		}
+	public function addComp($nom, $adresse, $pays){
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
+>>>>>>> cc1afa02f0c987d8dc616fb7805b05f44f285b1d
 		try{
 			$this->connexion();
 		}catch (ConnexionException $e){
 			print($e->afficher());
 		}
 		try{
+<<<<<<< HEAD
 			$c = $this->connexion->prepare('SELECT * FROM Client WHERE id = ?');
 			$c->execute(array($id));
 			if($tabC = $c->fetch()){
@@ -161,10 +253,35 @@ class Dao
 						$tabC['nom']
 				};
 		}
+=======
+<<<<<<< Updated upstream
+			$add = $this->connexion->prepare('INSERT INTO 24H_COMP (nom, adresse, pays) 
+				VALUES (?, ?, ?)');
+	    	$add->execute(array($nom, $adresse, $pays));   	
+=======
+<<<<<<< HEAD
+		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_NAVIRE WHERE ID = ?');
+	    	$navire->execute(array($id));	    	
+	    	if($ = $navire->fetch()){
+	    		$res = new Navire(
+						$donnees['ID'], 
+						$donnees['NOM'], 
+						$donnees['EVP'], 
+						$donnees['ID_COMP'] 
+					);
+	    	}			
+=======
+			$add = $this->connexion->prepare('INSERT INTO 24H_COMP (nom, adresse, pays) 
+				VALUES (?, ?, ?)');
+	    	$add->execute(array($nom, $adresse, $pays));   	
+>>>>>>> origin/master
+>>>>>>> Stashed changes
+>>>>>>> cc1afa02f0c987d8dc616fb7805b05f44f285b1d
 		}catch (TableAccesException $e){
 			print($e->afficher());
 		}
 		$this->deconnexion();
+<<<<<<< HEAD
 		return $res;
 
 	}
@@ -193,3 +310,19 @@ class Dao
 		return $res;
 	}
 }
+=======
+<<<<<<< Updated upstream
+	}
+
+}
+=======
+<<<<<<< HEAD
+		return $res;
+	}
+=======
+	}
+
+}
+>>>>>>> origin/master
+>>>>>>> Stashed changes
+>>>>>>> cc1afa02f0c987d8dc616fb7805b05f44f285b1d

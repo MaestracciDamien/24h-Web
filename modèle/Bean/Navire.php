@@ -9,10 +9,10 @@ class Navire{
 
 
 	// Constructeur de la classe
-	public function __construct($i, $e, $n, $idC){
+	public function __construct($i, $n, $e, $idC){
 		$this->id = $i;
-		$this->evp = $e;
 		$this->nom = $n;
+		$this->evp = $e;
 		$this->idComp = $idC;
 	}
 
