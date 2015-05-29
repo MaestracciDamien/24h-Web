@@ -9,6 +9,5 @@
 	<link rel="stylesheet" href="vues/css/style.css">
 	<link rel="stylesheet" type="text/css" href="vues/css/default.css" />
 	<link rel="stylesheet" type="text/css" href="vues/css/component.css" />
-	<script src="js/modernizr.custom.js"></script>	
 </head>
 	<body data-ng-app="myApp">
