@@ -49,6 +49,10 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 				
 			}
 
+			elseif (isset($_GET["connect"])) {
+					$this->affichage->connect();
+			}
+
 			else{
 				$this->affichage->index();
 			}
