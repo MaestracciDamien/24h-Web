@@ -19,7 +19,7 @@ class Dao
 	// une exception ConnectionException est levée s'il y a un problème de connexion à la base
 	public function connexion(){ 
 	  	try{
-			$this->connexion = new PDO('mysql:host=maximebeatb1.mysql.db;dbname=maximebeatb1','maximebeatb1','Maxneo2012', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+			$this->connexion = new PDO('mysql:host=localhost;dbname=24H','root','toor', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 			$this->connexion->exec("SET CHARACTER SET utf8");
 		}catch (ConnexionException $e){
 			print($e->afficher());
@@ -61,10 +61,12 @@ class Dao
 						$tabCharge['id'],
 						$tabCharge['id_escale'],
 						$tabCharge['id_cont'],
-						$tabCharge['decharge']
-				};
+						$tabCharge['decharge']);
+				}
+		
 		}
-		}catch (TableAccesException $e){
+
+		catch (TableAccesException $e){
 			print($e->afficher());
 		}
 		$this->deconnexion();
@@ -137,7 +139,7 @@ class Dao
 			}
 			$this->deconnexion();
 		}
-	}
+	
 
 
 	public function addComp($nom, $adresse, $pays){
@@ -152,7 +154,7 @@ class Dao
 	    	$add->execute(array($nom, $adresse, $pays));   	
 		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_NAVIRE WHERE ID = ?');
 	    	$navire->execute(array($id));	    	
-	    	if($ = $navire->fetch()){
+	    	if($donnees = $navire->fetch()){
 	    		$res = new Navire(
 						$donnees['ID'], 
 						$donnees['NOM'], 
@@ -171,20 +173,7 @@ class Dao
 	}
 
 
-	public function addNavire($id,$nom,$evp,$id_comp){
-		try{
-			$this->connexion();
-		}catch (ConnexionException $e){
-			print($e->afficher());
-		}
-		try{
-			$add = $this->connexion->prepare('INSERT INTO 24H_NAVIRE (ID, EVP, NOM, ID_COMP) VALUES (?, ?, ?, ?)');
-	    	$add->execute(array($id,$evp,$nom,$id_comp));   	
-		}catch (TableAccesException $e){
-			print($e->afficher());
-		}
-		$this->deconnexion();
-	}
+	
 
 
 	public function getListeNavires(){
@@ -222,7 +211,7 @@ class Dao
 		try{
 		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_NAVIRE WHERE ID = ?');
 	    	$navire->execute(array($id));	    	
-	    	if($ = $navire->fetch()){
+	    	if($donnees = $navire->fetch()){
 	    		$res = new Navire(
 						$donnees['ID'], 
 						$donnees['NOM'], 
@@ -309,7 +298,7 @@ class Dao
 			}
 			$this->deconnexion();
 		}
-	}
+	
 
 	public function deleteUser($id){
 			try{
@@ -325,7 +314,7 @@ class Dao
 			}
 			$this->deconnexion();
 		}
-	}
+	
 
 	public function getClient($id){
 		$res = null;
@@ -337,7 +326,7 @@ class Dao
 		try{
 		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_CLIENT WHERE ID = ?');
 	    	$navire->execute(array($id));	    	
-	    	if($ = $navire->fetch()){
+	    	if($donnees = $navire->fetch()){
 	    		$res = new Client(
 						$donnees['ID'], 
 						$donnees['NOM']
@@ -360,7 +349,7 @@ class Dao
 		try{
 		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_USER WHERE ID = ?');
 	    	$navire->execute(array($id));	    	
-	    	if($ = $navire->fetch()){
+	    	if($donnees = $navire->fetch()){
 	    		$res = new User(
 						$donnees['ID'], 
 						$donnees['LOGIN'], 

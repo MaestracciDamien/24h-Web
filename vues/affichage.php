@@ -167,6 +167,32 @@
 			include 'includes/script.php';
 			include 'includes/foot.php';
 		}
+
+		function genereVueNavire($navire) {
+
+			include 'includes/head.php';
+			include 'includes/nav.php';
+			?>
+			<div class="main clearfix">
+				<div class="row">
+					<div class="col-md-4 text-center"></div>
+					<div class="col-md-4 text-center">
+						<ul>
+							<li>Compagnie : <?php echo ($navire->getIdComp()); ?></li>
+							<li>Nom navire : <?php echo ($navire->getNom()); ?></li>
+							<li>EVP Navire : <?php echo ($navire->getEVP()); ?></li>							
+						</ul>
+						
+
+					</div>
+					<div class="col-md-4 text-center"></div>
+				</div>
+			</div>
+			<?php
+			include 'includes/footer.php';
+			include 'includes/script.php';
+			include 'includes/foot.php';
+		}
 		
 	}
 ?>

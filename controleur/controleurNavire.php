@@ -6,7 +6,7 @@ class ControleurNavire{
  
 	public function __construct(){
 		$this->modele = new Dao();
-		$this->vue = new Vue();
+		$this->vue = new affichage();
 	}
 
 	public function afficherNavire($id){
