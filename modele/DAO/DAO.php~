@@ -414,9 +414,9 @@ class Dao
 			{
 				array_push($res, new Navire(
 						$donnees['ID'], 
-						$donnees['LOGIN'], 
-						$donnees['MDP'], 
-						$donnees['TYPE'] 
+						$donnees['NOM'], 
+						$donnees['EVP'], 
+						$donnees['ID_COMP'] 
 					));
 			}
 		}catch (TableAccesException $e){
