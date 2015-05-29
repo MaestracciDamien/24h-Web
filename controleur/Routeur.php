@@ -26,15 +26,15 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 
 				if (isset($_GET["type"])) {
 
-					if ($_GET["type"] == 1) {
+					if ($_GET["type"] == "comp") {
 						$this->affichage->inscription_comp();
 					}
 
-					elseif ($_GET["type"] == 2) {
+					elseif ($_GET["type"] == "client") {
 						$this->affichage->inscription_client();
 					}
 
-					elseif ($_GET["type"] == 3) {
+					elseif ($_GET["type"] == "agent") {
 						$this->affichage->inscription_agent();
 					}
 
