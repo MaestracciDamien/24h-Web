@@ -2,6 +2,8 @@
 require_once "ConnexionException.php";
 require_once "TableAccesException.php";
 require_once  __DIR__."/../bean/Comp.php";
+require_once  __DIR__."/../bean/Navire.php";
+require_once  __DIR__."/../Bean/Charge.php";
 
 class Dao
 {  
@@ -27,6 +29,46 @@ class Dao
 	// méthode qui permet de se déconnecter de la base
 	public function deconnexion(){
 	  	$this->connexion = null;
+	}
+
+	public function addCharge($id, $id_escale, $id_cont, $decharge){
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try{
+			$michel = $this->connexion->prepare('INSERT INTO Charge (id, id_escale, id_cont, decharge) VALUES (?, ?, ?, ?)');
+			$michel->execute(array($id, $id_escale, $id_cont, $decharge));
+		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnection;
+	}	
+
+	public function getCharge($id){
+		$res = null;
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try{
+			$charge = $this->connexion->prepare('SELECT * FROM Charge WHERE id = ?');
+			$charge->execute(array($id));
+			if($tabCharge = $charge->fetch()){
+				$res = new Charge(
+						$tabCharge['id'],
+						$tabCharge['id_escale'],
+						$tabCharge['id_cont'],
+						$tabCharge['decharge']
+				};
+		}
+		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
 	}
 
 	public function getComp($id){
@@ -82,6 +124,72 @@ class Dao
 			print($e->afficher());
 		}
 		$this->deconnexion();
+	}
+
+	public function addNavire($id,$nom,$evp,$id_comp){
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try{
+			$add = $this->connexion->prepare('INSERT INTO 24H_NAVIRE (ID, EVP, NOM, ID_COMP) VALUES (?, ?, ?, ?)');
+	    	$add->execute(array($id,$evp,$nom,$id_comp));   	
+		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+	}
+
+
+		public function getListeNavires(){
+		$res = array();
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try{
+		  	$navires = $this->connexion->query('SELECT * FROM 24H_NAVIRE');
+			while ($donnees = $navires->fetch())
+			{
+				array_push($res, new Navire(
+						$donnees['ID'], 
+						$donnees['NOM'], 
+						$donnees['EVP'], 
+						$donnees['ID_COMP'] 
+					));
+			}
+		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
+	}
+
+	public function getNavire($id){
+		$res = null;
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try{
+		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_NAVIRE WHERE ID = ?');
+	    	$navire->execute(array($id));	    	
+	    	if($ = $navire->fetch()){
+	    		$res = new Navire(
+						$donnees['ID'], 
+						$donnees['NOM'], 
+						$donnees['EVP'], 
+						$donnees['ID_COMP'] 
+					);
+	    	}			
+		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
 	}
 
 }
