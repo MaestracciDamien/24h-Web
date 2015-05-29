@@ -1,4 +1,6 @@
 <?php
+require_once "ConnexionException.php";
+require_once "TableAccesException.php";
 
 class Dao
 {  
