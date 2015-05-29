@@ -3,7 +3,7 @@
 class Client{
 
 	private $id;
-	private $nom
+	private $nom;
 
 	// Constructeur de la classe
 	public function __construct($i, $n){
