@@ -3,6 +3,8 @@
 
 set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 	require_once "vues/affichage.php";
+	require_once __DIR__."/../dao/affichage.php";
+
 
 
 	class Routeur {
