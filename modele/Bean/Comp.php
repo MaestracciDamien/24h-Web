@@ -18,6 +18,6 @@ class Comp{
 	public function getId(){ return $this->id; }
 	public function getNom(){ return $this->nom; }
 	public function getAdresse(){ return $this->adresse; }
-	public function getPays(){ return $this->payss; }
+	public function getPays(){ return $this->pays; }
 	
 }
