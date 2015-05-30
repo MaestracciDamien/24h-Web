@@ -8,8 +8,13 @@ class ControleurConnexion{
 		$this->vue = new Affichage();
 	}
 
-	public function connexion($id, $mdp){
+	public function connexion($pseudo, $mdp){
 		$dao = new Dao();
-		$connecte = $dao->getClient();
+		$user = $dao->getClientByPseudo($pseudo);
+		if ($user->getMdp() == $mdp) {
+			$_SESSION['pseudo'] = $pseudo;
+			$_SESSION['id'] = $user->getId();
+			$_SESSION['type'] = $user->getType();
+		}
 	}
 }

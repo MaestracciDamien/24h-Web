@@ -275,7 +275,7 @@ class Dao
 			print($e->afficher());
 		}
 		try{
-			$add = $this->connexion->prepare('INSERT INTO 24H_USER (ID, LOGIN, MDP, TYPE) VALUES (?, ?, ?, ?)');
+			$add = $this->connexion->prepare('INSERT INTO 24H_USERS (ID, LOGIN, MDP, TYPE) VALUES (?, ?, ?, ?)');
 	    	$add->execute(array($i,$l,$m,$t));   	
 		}catch (TableAccesException $e){
 			print($e->afficher());
@@ -307,7 +307,7 @@ class Dao
 				print($e->afficher());
 			}
 			try{
-				$delete = $this->connexion->prepare('DELETE FROM 24H_USER WHERE id = ?');
+				$delete = $this->connexion->prepare('DELETE FROM 24H_USERS WHERE id = ?');
 		    	$delete->execute(array($id));   	
 			}catch (TableAccesException $e){
 				print($e->afficher());
@@ -347,7 +347,7 @@ class Dao
 			print($e->afficher());
 		}
 		try{
-		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_USER WHERE ID = ?');
+		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_USERS WHERE ID = ?');
 	    	$navire->execute(array($id));	    	
 	    	if($donnees = $navire->fetch()){
 	    		$res = new User(
@@ -358,6 +358,31 @@ class Dao
 					);
 	    	}
 		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
+	}
+
+	public function getUserByPseudo($pseudo){
+		$res = null;
+		try{
+			$this->connexion();
+		} catch (ConnexionException $e) {
+			print($e->afficher());
+		}
+		try {
+			$user = $this->connexion->prepare('SELECT * FROM 24H_USERS WHERE pseudo = :pseudo');
+			$user->execute(array('pseudo' => $pseudo));
+			if ($donnees = navire->fetch()) {
+				$res = new User(
+						$donnees['ID'], 
+						$donnees['LOGIN'], 
+						$donnees['MDP'], 
+						$donnees['TYPE'] 
+					);
+			}
+		} catch (TableAccesException $e) {
 			print($e->afficher());
 		}
 		$this->deconnexion();
