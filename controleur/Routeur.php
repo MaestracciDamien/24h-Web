@@ -66,6 +66,10 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 				$this->affichage->connect();
 			}
 
+			elseif (isset($_GET["deconnect"])) {
+				
+			}
+
 			else{
 				$this->affichage->index();
 			}

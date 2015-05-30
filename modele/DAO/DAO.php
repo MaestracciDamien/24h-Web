@@ -20,7 +20,7 @@ class Dao
 	// une exception ConnectionException est levée s'il y a un problème de connexion à la base
 	public function connexion(){ 
 	  	try{
-			$this->connexion = new PDO('mysql:host=localhost;dbname=maximebeatb1','root','', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+			$this->connexion = new PDO('mysql:host=localhost;dbname=24H','root','toor', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 			$this->connexion->exec("SET CHARACTER SET utf8");
 		}catch (ConnexionException $e){
 			print($e->afficher());
