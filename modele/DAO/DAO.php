@@ -125,16 +125,6 @@ class Dao
 			print($e->afficher());
 		}
 		try{
-		  	$navires = $this->connexion->query('SELECT * FROM 24H_NAVIRE');
-			while ($donnees = $navires->fetch())
-			{
-				array_push($res, new Navire(
-						$donnees['ID'], 
-						$donnees['NOM'], 
-						$donnees['EVP'], 
-						$donnees['ID_COMP'] 
-					));
-			}
 		  	$comp = $this->connexion->prepare('SELECT * FROM 24H_COMP WHERE id = ?');
 	    	$comp->execute(array($id));	    	
 	    	if($tabComp = $comp->fetch()){
@@ -142,7 +132,8 @@ class Dao
 	    				$tabComp['ID'], 
 						$tabComp['NOM'], 
 						$tabComp['ADRESSE'], 
-						$tabComp['PAYS']
+						$tabComp['PAYS'],
+						$tabComp['ID_USER']
 					));
 	    	}			
 		}catch (TableAccesException $e){
@@ -202,7 +193,8 @@ class Dao
 	    				$donnees['ID'], 
 						$donnees['NOM'], 
 						$donnees['ADRESSE'], 
-						$donnees['PAYS']
+						$donnees['PAYS'],
+						$donnees['ID_USER']
 					);
 			}
 		} catch (TableAccesException $e) {
@@ -516,7 +508,8 @@ class Dao
 	    				$tabComp['ID'], 
 						$tabComp['NOM'], 
 						$tabComp['ADRESSE'], 
-						$tabComp['PAYS']
+						$tabComp['PAYS'],
+						$tabComp['ID_USER']
 					);
 	    	}			
 		}catch (TableAccesException $e){
