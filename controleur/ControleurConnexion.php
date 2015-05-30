@@ -19,6 +19,6 @@ class ControleurConnexion{
 	}
 
 	public function deconnexion() {
-		session_unset();
+		unset($_SESSION['pseudo']);
 	}
 }
