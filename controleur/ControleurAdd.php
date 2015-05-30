@@ -10,7 +10,9 @@ class ControleurAdd{
 	}
 
 	public function addUser() {
+		echo "oups";
 		if (isset($_POST['login']) && isset($_POST['mdp']) && isset($_POST['type'])) {
+			echo "ouhlala";
 			$this->dao->addUser($_POST['login'],$_POST['mdp'],$_POST['type']);
 		}
 	}
