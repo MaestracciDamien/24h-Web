@@ -90,6 +90,28 @@ class Dao
 		$this->deconnexion();
 	}
 
+	public function getEscales($idNavire){ 
+		$res = array(); 
+		try{ 
+			$this->connexion(); 
+		}catch (ConnexionException $e)
+		{ 
+			print($e->afficher()); 
+		} 
+		try{ 
+			$escales = $this->connexion->prepare('SELECT * FROM 24H_ESCALE where ID_NAV = ?'); 
+			$escales->execute(array($idNavire)); 
+			while ($donnees = $escales->fetch()) 
+			{ 
+				array_push($res, new Escale( $donnees['ID'], $donnees['ID_NAV'], $donnees['DATE_ENTREE'], $donnees['DATE_SORTIE'] )); 
+			} 
+		}catch (TableAccesException $e){ 
+			print($e->afficher()); 
+		} 
+		$this->deconnexion(); 
+		return $res; 
+	}
+
 
 	public function getComp($id){
 		$res = array();
