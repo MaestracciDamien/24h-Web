@@ -10,7 +10,7 @@ class ControleurConnexion{
 
 	public function connexion($pseudo, $mdp){
 		$dao = new Dao();
-		$user = $dao->getClientByPseudo($pseudo);
+		$user = $dao->getUserByPseudo($pseudo);
 		if ($user->getMdp() == $mdp) {
 			$_SESSION['pseudo'] = $pseudo;
 			$_SESSION['id'] = $user->getId();
