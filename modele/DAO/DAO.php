@@ -201,7 +201,29 @@ class Dao
 
 
 	
-
+	public function getListeComp() {
+		$res = array();
+		try{
+			$this->connexion();
+		} catch(ConnexionException $e) {
+			print($e->afficher());
+		}
+		try {
+			$comps = $this->connexion->query('SELECT * FROM 24H_COMP');
+			while($donnees = $comps->fetch()) {
+				$res[] = new Navire(
+						$donnees['ID'], 
+						$donnees['NOM'], 
+						$donnees['EVP'], 
+						$donnees['ID_COMP'] 
+					);
+			}
+		} catch (TableAccesException $e) {
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
+	}
 
 	public function getListeNavires(){
 		$res = array();
