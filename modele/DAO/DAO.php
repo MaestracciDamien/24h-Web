@@ -296,15 +296,15 @@ class Dao
 		$this->deconnexion();
 	}
 
-	public function addUser($i, $l, $m, $t){
+	public function addUser($l, $m, $t){
 		try{
 			$this->connexion();
 		}catch (ConnexionException $e){
 			print($e->afficher());
 		}
 		try{
-			$add = $this->connexion->prepare('INSERT INTO 24H_USERS (ID, LOGIN, MDP, TYPE) VALUES (?, ?, ?, ?)');
-	    	$add->execute(array($i,$l,$m,$t));   	
+			$add = $this->connexion->prepare('INSERT INTO 24H_USERS (LOGIN, MDP, TYPE) VALUES (?, ?, ?)');
+	    	$add->execute(array($l,$m,$t));   	
 		}catch (TableAccesException $e){
 			print($e->afficher());
 		}
