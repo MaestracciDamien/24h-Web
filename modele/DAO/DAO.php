@@ -250,7 +250,7 @@ class Dao
 		try {
 			$escs = $this->connexion->query('SELECT * FROM 24H_ESCALE');
 			while ($data = $escs->fetch()) {
-				$ret[] = new Escale($data['ID'],
+				$res[] = new Escale($data['ID'],
 					$data['ID_NAV'],
 					$data['DATE_ENTREE'],
 					$data['DATE_SORTIE']);
