@@ -59,15 +59,15 @@ require_once 'includes/nav.php';
 								</div>
 							  	<div class="form-group">
 							    <label for="exampleInputEmail1">Nom compagnie</label>
-							    <input type="text" class="form-control" placeholder="Nom" name="compagnie">
+							    <input type="text" class="form-control" placeholder="Nom" name="compagnie" required>
 							  </div>
 							  <div class="form-group">
 							    <label for="exampleInputPassword1">Adresse</label>
-							    <input type="text" class="form-control" name="adresse" placeholder="Adresse">
+							    <input type="text" class="form-control" name="adresse" placeholder="Adresse" required>
 							  </div>
 							   <div class="form-group">
 							    <label for="">Code Pays</label>
-							    <input type="text" class="form-control" name="pays" placeholder="Code Pays">						
+							    <input type="text" class="form-control" name="pays" placeholder="Code Pays" required>						
 							  </div>							  
 							  <button type="submit" class="btn btn-default">Envoyer</button>
 							</form>
@@ -97,7 +97,7 @@ require_once 'includes/nav.php';
 								</div>
 							  	<div class="form-group">
 							    <label for="exampleInputEmail1">Nom client</label>
-							    <input type="text" class="form-control" placeholder="Nom" name="nom">
+							    <input type="text" class="form-control" placeholder="Nom" name="nom" required>
 							  </div>					  
 							  <button type="submit" class="btn btn-default">Envoyer</button>
 							</form>
@@ -127,7 +127,7 @@ require_once 'includes/nav.php';
 								</div>
 							  	<div class="form-group">
 							    <label for="exampleInputEmail1">Nom agent</label>
-							    <input type="text" class="form-control" placeholder="Nom" name="nom">
+							    <input type="text" class="form-control" placeholder="Nom" name="nom" required>
 							  </div>					  
 							  <button type="submit" class="btn btn-default">Envoyer</button>
 							</form>
@@ -158,11 +158,11 @@ require_once 'includes/nav.php';
 								</div>
 							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">Login</label>
-							    	<input type="text" class="form-control" placeholder="Login" name="login">
+							    	<input type="text" class="form-control" placeholder="Login" name="login" required>
 							  	</div>
 							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">Mot de passe</label>
-							    	<input type="text" class="form-control" placeholder="Mot de passe" name="mdp">
+							    	<input type="password" class="form-control" placeholder="Mot de passe" name="mdp" required>
 							  	</div>						  
 							  <button type="submit" class="btn btn-default">Envoyer</button>
 							</form>

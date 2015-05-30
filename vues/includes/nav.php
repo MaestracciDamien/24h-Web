@@ -36,9 +36,9 @@ class Nav{
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Connexion<span class="caret"></span></a>
           <form action="index.php" method="post" class="dropdown-menu" role="menu">
             <li>Login :</li>
-            <li> <input type="text" name="login"></li>
+            <li> <input type="text" name="login" required></li>
             <li>Mot de passe :</li>
-            <li> <input type="text" name="mdp"></li>
+            <li> <input type="password" name="mdp" required></li>
             <li> <input type="submit" text="Envoyer"></li>
           </form>
 <?php
