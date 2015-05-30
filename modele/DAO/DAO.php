@@ -211,11 +211,11 @@ class Dao
 		try {
 			$comps = $this->connexion->query('SELECT * FROM 24H_COMP');
 			while($donnees = $comps->fetch()) {
-				$res[] = new Navire(
-						$donnees['ID'], 
-						$donnees['NOM'], 
-						$donnees['EVP'], 
-						$donnees['ID_COMP'] 
+				$res[] = new Comp(
+	    				$tabComp['ID'], 
+						$tabComp['NOM'], 
+						$tabComp['ADRESSE'], 
+						$tabComp['PAYS']
 					);
 			}
 		} catch (TableAccesException $e) {
