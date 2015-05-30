@@ -169,16 +169,16 @@ class Dao
 	
 
 
-	public function addComp($nom, $adresse, $pays){
+	public function addComp($nom, $adresse, $pays, $idUser){
 		try{
 			$this->connexion();
 		}catch (ConnexionException $e){
 			print($e->afficher());
 		}
 		try{
-			$add = $this->connexion->prepare('INSERT INTO 24H_COMP (nom, adresse, pays) 
-				VALUES (?, ?, ?)');
-	    	$add->execute(array($nom, $adresse, $pays));   	
+			$add = $this->connexion->prepare('INSERT INTO 24H_COMP (NOM, ADRESSE, PAYS, ID_USER) 
+				VALUES (?, ?, ?,?)');
+	    	$add->execute(array($nom, $adresse, $pays, $idUser));   	
 		}catch (TableAccesException $e){
 			print($e->afficher());
 		}
