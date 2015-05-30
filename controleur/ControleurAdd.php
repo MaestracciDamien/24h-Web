@@ -11,7 +11,7 @@ class ControleurAdd{
 
 	public function addComp() {
 		if (isset($_POST['nom']) && isset($_POST['adresse']) && isset($_POST['pays']) && isset($_POST['id_user'])) {
-			$dao->addComp($_POST['nom'],$_POST['adresse'],$_POST['pays'],$_POST['id_user']);
+			$this->dao->addComp($_POST['nom'],$_POST['adresse'],$_POST['pays'],$_POST['id_user']);
 		}
 	}
 }
