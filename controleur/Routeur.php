@@ -55,6 +55,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 
 			elseif (isset($_POST["login"]) && isset($_POST["mdp"])) {
 				$this->ctrlConnect->connexion($_POST["login"], $_POST["mdp"]);
+				$this->affichage->index();
 			}
 
 			elseif (isset($_GET["navire"])) {

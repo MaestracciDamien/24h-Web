@@ -374,7 +374,7 @@ class Dao
 		try {
 			$user = $this->connexion->prepare('SELECT * FROM 24H_USERS WHERE pseudo = :pseudo');
 			$user->execute(array('pseudo' => $pseudo));
-			if ($donnees = navire->fetch()) {
+			if ($donnees = $user->fetch()) {
 				$res = new User(
 						$donnees['ID'], 
 						$donnees['LOGIN'], 
