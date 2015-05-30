@@ -17,7 +17,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 
 
 		function __construct()
-		{		
+		{
 			$this->affichage = new affichage();	
 			$this->ctrlNavire = new ControleurNavire();
 			$this->ctrlConnect = new ControleurConnexion();

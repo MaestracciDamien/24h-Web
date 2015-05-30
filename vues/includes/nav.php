@@ -30,7 +30,7 @@ class Nav{
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
 <?php
-          if(issset($_SESSION['pseudo'])){
+          if(isset($_SESSION['pseudo'])){
 
 ?>
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Connexion<span class="caret"></span></a>
