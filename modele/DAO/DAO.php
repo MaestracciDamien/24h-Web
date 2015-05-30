@@ -22,7 +22,7 @@ class Dao
 	public function connexion(){ 
 	  	try{
 
-			$this->connexion = new PDO('mysql:host=localhost;dbname=24H','root','root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+			$this->connexion = new PDO('mysql:host=localhost;dbname=24H','root','toor', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 			$this->connexion->exec("SET CHARACTER SET utf8");
 		}catch (ConnexionException $e){
 			print($e->afficher());
@@ -464,5 +464,33 @@ class Dao
 		$this->deconnexion();
 		return $res;
 	}
+
+
+	public function getCompByUserId($id){
+		$res = null;
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try {
+		  	$comp = $this->connexion->prepare('SELECT * FROM 24H_COMP WHERE ID_USER = ?');
+	    	$comp->execute(array($id));	    	
+	    	if($tabComp = $comp->fetch()){
+	    		$res = new Comp(
+	    				$tabComp['ID'], 
+						$tabComp['NOM'], 
+						$tabComp['ADRESSE'], 
+						$tabComp['PAYS']
+					);
+	    	}			
+		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
+	}
+
+
 
 }
