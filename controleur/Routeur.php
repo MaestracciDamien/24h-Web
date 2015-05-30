@@ -82,7 +82,6 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 			}
 
 			elseif (isset($_POST["add_user"])) {
-				echo "ondcoznzo";
 				$this->ctrlAdd->addUser();
 				$this->affichage->index();
 			}
