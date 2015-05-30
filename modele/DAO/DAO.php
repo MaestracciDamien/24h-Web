@@ -6,6 +6,8 @@ require_once  __DIR__."/../Bean/Escale.php";
 require_once  __DIR__."/../Bean/Navire.php";
 require_once  __DIR__."/../Bean/Charge.php";
 require_once  __DIR__."/../Bean/Users.php";
+require_once  __DIR__."/../Bean/Client.php";
+require_once  __DIR__."/../Bean/Cont.php";
 
 class Dao
 {  
