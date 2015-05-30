@@ -29,7 +29,13 @@ class ControleurAdd{
 
 	public function addEscale() {
 		if (isset($_POST['id_nav']) && isset($_POST['date_entree']) && isset($_POST['date_sortie'])) {
-			$this->dao->addNavire($_POST['id_nav'],$_POST['date_entree'],$_POST['date_sortie']);
+			$this->dao->addEscale($_POST['id_nav'],$_POST['date_entree'],$_POST['date_sortie']);
+		}
+	}
+
+	public function addCont() {
+		if (isset($_POST['evp']) && isset($_POST['id_client'])) {
+			$this->dao->addCont($_POST['evp'],$_POST['id_client']);
 		}
 	}
 }

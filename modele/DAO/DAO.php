@@ -158,7 +158,21 @@ class Dao
 			$this->deconnexion();
 		}
 	
-
+	public function addCont($evp,$id_client) {
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try{
+			$add = $this->connexion->prepare('INSERT INTO 24H_CONT (EVP, ID_CLIENT) 
+				VALUES (?,?)');
+	    	$add->execute(array($evp,$id_client));   	
+		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+	}
 
 	public function addComp($nom, $adresse, $pays, $idUser){
 		try{
@@ -174,7 +188,6 @@ class Dao
 			print($e->afficher());
 		}
 		$this->deconnexion();
-		return $res;
 	}
 
 
@@ -195,6 +208,29 @@ class Dao
 						$donnees['ADRESSE'], 
 						$donnees['PAYS'],
 						$donnees['ID_USER']
+					);
+			}
+		} catch (TableAccesException $e) {
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
+	}
+
+	public function getListeCont() {
+		$res = array();
+		try{
+			$this->connexion();
+		} catch(ConnexionException $e) {
+			print($e->afficher());
+		}
+		try {
+			$comps = $this->connexion->query('SELECT * FROM 24H_CONT');
+			while($donnees = $comps->fetch()) {
+				$res[] = new Cont(
+	    				$donnees['ID'], 
+						$donnees['EVP'], 
+						$donnees['ID_CLIENT']
 					);
 			}
 		} catch (TableAccesException $e) {
