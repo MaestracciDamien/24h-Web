@@ -45,7 +45,7 @@
 				<div class="row">
 						<div class="col-md-4 text-center"></div>
 						<div class="col-md-4 text-center">
-							<form method="post" action="">
+							<form method="post" action="index.php">
 								<div class="form-group">
 								<input type="hidden" name="inscription" value="1">
 								</div>
@@ -143,7 +143,7 @@
 				<div class="row">
 						<div class="col-md-4 text-center"></div>
 						<div class="col-md-4 text-center">
-							<form class="connect" method="post" action="">
+							<form class="connect" method="post" action="index.php">
 								<h1>Connexion</h1>
 								<div class="form-group">
 									<input type="hidden" name="connect" value="1">

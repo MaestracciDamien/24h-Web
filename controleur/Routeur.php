@@ -4,23 +4,23 @@
 set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 	require_once "vues/affichage.php";
 	require_once "controleur/controleurNavire.php";
+	require_once "controleur/ControleurConnexion.php";
 	require_once "modele/DAO/DAO.php";
 
 
 	class Routeur {
 		
 		private $ctrlCreation;
-		/*private $ctrlAffichage;*/
 		private $affichage;
 		private $ctrlNavire;
+		private $ctrlConnect;
 
 
 		function __construct()
-		{
-			/*$this->ctrlAffichage = new ControleurAffichage();*/			
+		{		
 			$this->affichage = new affichage();	
 			$this->ctrlNavire = new ControleurNavire();
-
+			$this->ctrlConnect = new ControleurConnexion();
 		}
 
 		public function router()
@@ -53,13 +53,12 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 				
 			}
 
-			elseif (isset($_GET["connect"])) {
-					$this->affichage->connect();
+			elseif (isset($_POST["login"]) && isset($_POST["mdp"])) {
+				$this->ctrlConnect->connexion($_POST["login"], $_POST["mdp"]);
 			}
 
-
 			elseif (isset($_GET["navire"])) {
-					$this->ctrlNavire->afficherNavire($_GET["navire"]);
+				$this->ctrlNavire->afficherNavire($_GET["navire"]);
 			}
 
 			else{
