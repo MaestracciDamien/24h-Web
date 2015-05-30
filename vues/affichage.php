@@ -382,7 +382,7 @@ require_once 'includes/nav.php';
 						echo '<table class="table table-striped table-bordered">';
 						echo '<tr><th>ID</th><th>NOM</th><th>EVP</th><th>Id Compagnie</th></tr>';
 						foreach ($navires as $navire) {
-							echo '<tr><td>'.$navire->getId().'</td><td>'.$navire->getNom().'</td><td>'.$navire->getEVP().'</td><td>'.$navire->getIdComp.'</td></tr>';
+							echo '<tr><td>'.$navire->getId().'</td><td>'.$navire->getNom().'</td><td>'.$navire->getEVP().'</td><td>'.$navire->getIdComp().'</td></tr>';
 						}
 
 
@@ -396,12 +396,16 @@ require_once 'includes/nav.php';
 									<input type="hidden" name="add_navire">
 								</div>
 							  	<div class="form-group">
-							    	<label for="exampleInputEmail1">Login</label>
-							    	<input type="text" class="form-control" placeholder="Login" name="login" required>
+							    	<label for="exampleInputEmail1">Nom</label>
+							    	<input type="text" class="form-control" placeholder="Nom" name="nom" required>
 							  	</div>
 							  	<div class="form-group">
-							    	<label for="exampleInputEmail1">Mot de passe</label>
-							    	<input type="password" class="form-control" placeholder="Mot de passe" name="mdp" required>
+							    	<label for="exampleInputEmail1">EVP</label>
+							    	<input type="text" class="form-control" placeholder="EVP" name="evp" required>
+							  	</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">ID Compagnie</label>
+							    	<input type="text" class="form-control" placeholder="ID Compagnie" name="id_comp" required>
 							  	</div>						  
 							  <button type="submit" class="btn btn-default">Envoyer</button>
 							</form>
