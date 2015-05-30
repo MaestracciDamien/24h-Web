@@ -338,9 +338,9 @@ require_once 'includes/nav.php';
 						$this->DAO = new DAO();
 						$compagnies= $this->DAO->getListeComp();
 						echo '<table class="table table-striped table-bordered">';
-						echo '<tr><th>ID</th><th>NOM</th><th>Adresse</th><th>Pays</th></tr>';
+						echo '<tr><th>ID</th><th>NOM</th><th>Adresse</th><th>Pays</th><th>Id User</th></tr>';
 						foreach ($compagnies as $compagnie) {
-							echo '<tr><td>'.$compagnie->getId().'</td><td>'.$compagnie->getNom().'</td><td>'.$compagnie->getAdresse().'</td><td>'.$compagnie->getPays().'</td></tr>';
+							echo '<tr><td>'.$compagnie->getId().'</td><td>'.$compagnie->getNom().'</td><td>'.$compagnie->getAdresse().'</td><td>'.$compagnie->getPays().'</td><td>'.$compagnie->getIdUser().'</tr>';
 						}
 
 
@@ -354,6 +354,44 @@ require_once 'includes/nav.php';
 									<input type="hidden" name="add_comp">
 								</div>
 							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">Nom</label>
+							    	<input type="text" class="form-control" placeholder="Nom" name="nom" required>
+							  	</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">Adresse</label>
+							    	<input type="password" class="form-control" placeholder="Adresse" name="adresse" required>
+							  	</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">Pays</label>
+							    	<input type="password" class="form-control" placeholder="Pays" name="pays" required>
+							  	</div>						  						  
+							  <button type="submit" class="btn btn-default">Envoyer</button>
+							</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<h2>Les navires : </h2>
+						<?php 
+						$this->DAO = new DAO();
+						$navires= $this->DAO->getListeNavires();
+						echo '<table class="table table-striped table-bordered">';
+						echo '<tr><th>ID</th><th>NOM</th><th>EVP</th><th>Id Compagnie</th></tr>';
+						foreach ($navires as $navire) {
+							echo '<tr><td>'.$navire->getId().'</td><td>'.$navire->getNom().'</td><td>'.$navire->getEVP().'</td><td>'.$navire->getIdComp.'</td></tr>';
+						}
+
+
+						?>
+						</table>
+					</div>
+					<div class="col-md-4">						
+						<form class="add" method="post" action="index.php">
+							<h2>Ajouter un navire</h2>
+								<div class="form-group">
+									<input type="hidden" name="add_navire">
+								</div>
+							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">Login</label>
 							    	<input type="text" class="form-control" placeholder="Login" name="login" required>
 							  	</div>
@@ -365,6 +403,7 @@ require_once 'includes/nav.php';
 							</form>
 					</div>
 				</div>
+
 			</div>	
 			<?php
 			include 'includes/footer.php';
