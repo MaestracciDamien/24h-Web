@@ -518,11 +518,11 @@ require_once 'includes/nav.php';
 							  	</div>
 							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">Date entrée</label>
-							    	<input type="text" class="form-control" placeholder="Date entrée" name="date_entree" required>
+							    	<input type="text" class="form-control datepicker" placeholder="Date entrée" name="date_entree" required>
 							  	</div>
 							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">Date Sortie</label>
-							    	<input type="text" class="form-control" placeholder="Date sortie" name="date_sortie" required>
+							    	<input type="text" class="form-control datepicker" placeholder="Date sortie" name="date_sortie" required>
 							  	</div>						  
 							  <button type="submit" class="btn btn-default">Envoyer</button>
 							</form>

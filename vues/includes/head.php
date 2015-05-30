@@ -9,5 +9,7 @@
 	<link rel="stylesheet" href="vues/css/style.css">
 	<link rel="stylesheet" type="text/css" href="vues/css/default.css" />
 	<link rel="stylesheet" type="text/css" href="vues/css/component.css" />
-</head>
+	<link rel="stylesheet" type="text/css" href="vues/js/libs/pickadate/lib/themes/classic.css">
+	<link rel="stylesheet" type="text/css" href="vues/js/libs/pickadate/lib/themes/classic.date.css">
+ </head>
 	<body data-ng-app="myApp">

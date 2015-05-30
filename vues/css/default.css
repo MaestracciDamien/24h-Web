@@ -224,3 +224,7 @@ table a {
 .panel-collapse h2 {
 	color: #000;
 }
+
+.navbar-right {
+	margin-left: -10em;
+}
