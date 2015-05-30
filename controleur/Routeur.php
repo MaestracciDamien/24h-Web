@@ -61,6 +61,10 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 				$this->ctrlNavire->afficherNavire($_GET["navire"]);
 			}
 
+			elseif (isset($_GET["connect"])) {
+				$this->affichage->connect();
+			}
+
 			else{
 				$this->affichage->index();
 			}
