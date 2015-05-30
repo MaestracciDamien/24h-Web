@@ -453,11 +453,11 @@ require_once 'includes/nav.php';
 					<h2>Les conteneurs : </h2>
 						<?php 
 						$this->DAO = new DAO();
-						$navires= $this->DAO->getListeNavires();
+						$conteneurs= $this->DAO->getListeCont();
 						echo '<table class="table table-striped table-bordered">';
-						echo '<tr><th>ID</th><th>NOM</th><th>EVP</th><th>Id Compagnie</th></tr>';
-						foreach ($navires as $navire) {
-							echo '<tr><td>'.$navire->getId().'</td><td>'.$navire->getNom().'</td><td>'.$navire->getEVP().'</td><td>'.$navire->getIdComp().'</td></tr>';
+						echo '<tr><th>ID</th><th>EVP</th><th>ID Client</th></tr>';
+						foreach ($conteneurs as $cont) {
+							echo '<tr><td>'.$cont->getId().'</td><td>'.$cont->getEvp().'</td><td>'.$cont->getIdClient().'</td></tr>';
 						}
 
 
@@ -466,22 +466,18 @@ require_once 'includes/nav.php';
 					</div>
 					<div class="col-md-4">						
 						<form class="add" method="post" action="index.php">
-							<h2>Ajouter un navire</h2>
+							<h2>Ajouter un conteneur</h2>
 								<div class="form-group">
-									<input type="hidden" name="add_navire">
+									<input type="hidden" name="add_cont">
 								</div>
-							  	<div class="form-group">
-							    	<label for="exampleInputEmail1">Nom</label>
-							    	<input type="text" class="form-control" placeholder="Nom" name="nom" required>
-							  	</div>
 							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">EVP</label>
 							    	<input type="text" class="form-control" placeholder="EVP" name="evp" required>
 							  	</div>
 							  	<div class="form-group">
-							    	<label for="exampleInputEmail1">ID Compagnie</label>
-							    	<input type="text" class="form-control" placeholder="ID Compagnie" name="id_comp" required>
-							  	</div>						  
+							    	<label for="exampleInputEmail1">ID Client</label>
+							    	<input type="text" class="form-control" placeholder="ID_Client" name="id_client" required>
+							  	</div>					  
 							  <button type="submit" class="btn btn-default">Envoyer</button>
 							</form>
 					</div>
@@ -514,7 +510,7 @@ require_once 'includes/nav.php';
 						<form class="add" method="post" action="index.php">
 							<h2>Ajouter une escale</h2>
 								<div class="form-group">
-									<input type="hidden" name="add_navire">
+									<input type="hidden" name="add_escale">
 								</div>
 							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">ID Nav</label>
