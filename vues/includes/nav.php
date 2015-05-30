@@ -53,6 +53,6 @@ class Nav{
     </div>
   </div>
 </nav>
-?>
+<?php
   }
 }
