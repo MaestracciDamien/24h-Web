@@ -67,7 +67,8 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 			}
 
 			elseif (isset($_GET["deconnect"])) {
-				
+				$this->ctrlConnect->deconnexion();
+				$this->affichage->index();
 			}
 
 			else{
