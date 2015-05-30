@@ -526,7 +526,7 @@ class Dao
 		try {
 		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_CONT WHERE ID_CLIENT = ?');
 	    	$navire->execute(array($id));	    	
-	    	if($donnees = $navire->fetch()){
+	    	while ($donnees = $navire->fetch()){
 	    		$res[] = new Cont(
 						$donnees['ID'], 
 						$donnees['EVP'],
