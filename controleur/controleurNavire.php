@@ -10,7 +10,7 @@ class ControleurNavire{
 	}
 
 	public function afficherNavire($id){
-		$this->vue->genereVueNavire($this->modele->getNavire($id));
+		$this->vue->genereVueNavire($this->modele->getNavire($id),$this->modele->getEscales($id));
 	}
 
 }

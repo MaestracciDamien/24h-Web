@@ -192,25 +192,32 @@ require_once 'includes/nav.php';
 			include 'includes/foot.php';
 		}
 
-		function genereVueNavire($navire) {
+		function genereVueNavire($navire,$escales) {
 
 			include 'includes/head.php';
 			$this->nav->navbar();
 			?>
 			<div class="main clearfix">
 				<div class="row">
-					<div class="col-md-4 text-center"></div>
-					<div class="col-md-4 text-center">
-						<ul>
-							<li>Compagnie : <?php echo ($navire->getIdComp()); ?></li>
-							<li>Nom navire : <?php echo ($navire->getNom()); ?></li>
-							<li>EVP Navire : <?php echo ($navire->getEVP()); ?></li>							
-						</ul>
-						
-
+					
+						<div class="panel panel-primary">
+							<div class="panel-heading"><h4>Nom navire : </h4> <it> <?php echo ($navire->getNom()); ?></it></div>
+	  						<div class="panel-body">
+	  							<ul>
+		    						<li>Compagnie : <?php echo ($navire->getIdComp()); ?></li>
+									<li>EVP Navire : <?php echo ($navire->getEVP()); ?></li>
+							</ul>
+  </div></div>
 					</div>
-					<div class="col-md-4 text-center"></div>
-				</div>
+					<ul class="list-group">
+					<?php
+						foreach ($escales as $escale) {
+							echo "<li class='list-group-item'>L'escale numéro:".$escale->getID()." a commencé le ".$escale->getDateEntree()." et fini le ".$escale->getDateSortie()."</li>";
+						}
+					?>
+					</ul>
+					
+				
 			</div>
 			<?php
 			include 'includes/footer.php';
