@@ -1,9 +1,10 @@
 <?php
 require_once "ConnexionException.php";
 require_once "TableAccesException.php";
-require_once  __DIR__."/../bean/Comp.php";
-require_once  __DIR__."/../bean/Navire.php";
+require_once  __DIR__."/../Bean/Comp.php";
+require_once  __DIR__."/../Bean/Navire.php";
 require_once  __DIR__."/../Bean/Charge.php";
+require_once  __DIR__."/../Bean/Users.php";
 
 class Dao
 {  
@@ -19,7 +20,7 @@ class Dao
 	// une exception ConnectionException est levée s'il y a un problème de connexion à la base
 	public function connexion(){ 
 	  	try{
-			$this->connexion = new PDO('mysql:host=localhost;dbname=24H','root','toor', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+			$this->connexion = new PDO('mysql:host=localhost;dbname=maximebeatb1','root','', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 			$this->connexion->exec("SET CHARACTER SET utf8");
 		}catch (ConnexionException $e){
 			print($e->afficher());
@@ -372,10 +373,10 @@ class Dao
 			print($e->afficher());
 		}
 		try {
-			$user = $this->connexion->prepare('SELECT * FROM 24H_USERS WHERE pseudo = :pseudo');
+			$user = $this->connexion->prepare('SELECT * FROM 24H_USERS WHERE LOGIN = :pseudo');
 			$user->execute(array('pseudo' => $pseudo));
 			if ($donnees = $user->fetch()) {
-				$res = new User(
+				$res = new Users(
 						$donnees['ID'], 
 						$donnees['LOGIN'], 
 						$donnees['MDP'], 
