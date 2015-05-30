@@ -193,7 +193,7 @@ require_once 'includes/nav.php';
 		}
 
 		function genereVueNavire($navire,$escales) {
-
+			$this->DAO = new DAO();
 			include 'includes/head.php';
 			$this->nav->navbar();
 			?>
@@ -212,7 +212,8 @@ require_once 'includes/nav.php';
 					<ul class="list-group">
 					<?php
 						foreach ($escales as $escale) {
-							echo "<li class='list-group-item'>L'escale numéro:".$escale->getID()." a commencé le ".$escale->getDateEntree()." et fini le ".$escale->getDateSortie()."</li>";
+							$EVP = $this->DAO->getTotalChargesByEscale($escale->getId());
+							echo "<li class='list-group-item'>L'escale numéro:".$escale->getID()." a commencé le ".$escale->getDateEntree()." et fini le ".$escale->getDateSortie()." / EVP Chargés : ".$EVP[0]." EVP Déchargés : ".$EVP[1]."</li>";
 						}
 					?>
 					</ul>

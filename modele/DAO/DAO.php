@@ -495,7 +495,7 @@ class Dao
 	function getTotalChargesByEscale($escaleId) {
 		$res = [0,0];
 		try {
-			$this->connection();
+			$this->connexion();
 		}catch(ConnexionException $e) {
 			print($e->afficher());
 		}
