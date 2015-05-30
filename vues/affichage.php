@@ -289,7 +289,16 @@ require_once 'includes/nav.php';
 			?>
 			<div class="container" role="main">
 				<h1>Votre interface de gestion Agent</h1>
-				<div class="row">
+				<div class="panel-group" id="accordion">
+ 					<div class="panel panel-default">
+    					<div class="panel-heading">
+     						<h4 class="panel-title">
+       						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Les utilisateurs</a>
+      						</h4>
+   						</div>
+    					<div id="collapse1" class="panel-collapse collapse">
+      					<div class="panel-body">
+      						<div class="row">
 					<div class="col-md-8">
 						<h2>Les utilisateurs : </h2>
 						<?php 
@@ -331,9 +340,21 @@ require_once 'includes/nav.php';
 							</form>
 					</div>
 				</div>
-				<div class="row">
+      					</div>
+					    </div>
+					  </div>
+					  <div class="panel panel-default">
+					    <div class="panel-heading">
+					      <h4 class="panel-title">
+					        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+					        Les compagnies</a>
+					      </h4>
+					    </div>
+					    <div id="collapse2" class="panel-collapse collapse">
+					      <div class="panel-body">
+					      	<div class="row">
 					<div class="col-md-8">
-						<h2>Les compagnies : </h2>
+					<h2>Les comagnies : </h2>
 						<?php 
 						$this->DAO = new DAO();
 						$compagnies= $this->DAO->getListeComp();
@@ -373,9 +394,63 @@ require_once 'includes/nav.php';
 							</form>
 					</div>
 				</div>
-				<div class="row">
+				</div>
+				</div>
+				</div>
+				<div class="panel panel-default">
+				    <div class="panel-heading">
+				    	<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Les navires</a></h4>
+					</div>
+					<div id="collapse3" class="panel-collapse collapse">
+						<div class="panel-body">
+					    	<div class="row">
+								<div class="col-md-8">
+								<h2>Les navires : </h2>
+								<?php 
+								$this->DAO = new DAO();
+								$navires= $this->DAO->getListeNavires();
+								echo '<table class="table table-striped table-bordered">';
+								echo '<tr><th>ID</th><th>NOM</th><th>EVP</th><th>Id Compagnie</th></tr>';
+								foreach ($navires as $navire) {
+									echo '<tr><td>'.$navire->getId().'</td><td>'.$navire->getNom().'</td><td>'.$navire->getEVP().'</td><td>'.$navire->getIdComp().'</td></tr>';
+								}
+								?>
+								</table>
+							</div>
+							<div class="col-md-4">						
+								<form class="add" method="post" action="index.php">
+									<h2>Ajouter un navire</h2>
+									<div class="form-group">
+										<input type="hidden" name="add_navire">
+									</div>
+								  	<div class="form-group">
+								    	<label for="exampleInputEmail1">Nom</label>
+								    	<input type="text" class="form-control" placeholder="Nom" name="nom" required>
+								  	</div>
+								  	<div class="form-group">
+								    	<label for="exampleInputEmail1">EVP</label>
+								    	<input type="text" class="form-control" placeholder="EVP" name="evp" required>
+								  	</div>
+								  	<div class="form-group">
+								    	<label for="exampleInputEmail1">ID Compagnie</label>
+								    	<input type="text" class="form-control" placeholder="ID Compagnie" name="id_comp" required>
+								  	</div>						  
+							  		<button type="submit" class="btn btn-default">Envoyer</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="panel panel-default">
+    				<div class="panel-heading">
+      					<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Les conteneurs</a></h4>
+    				</div>
+    				<div id="collapse4" class="panel-collapse collapse">
+				    	<div class="panel-body">
+				    	<div class="row">
 					<div class="col-md-8">
-						<h2>Les navires : </h2>
+					<h2>Les conteneurs : </h2>
 						<?php 
 						$this->DAO = new DAO();
 						$navires= $this->DAO->getListeNavires();
@@ -411,6 +486,57 @@ require_once 'includes/nav.php';
 							</form>
 					</div>
 				</div>
+				      	</div>
+				    </div>
+				</div>
+				<div class="panel panel-default">
+    				<div class="panel-heading">
+      					<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Les escales</a></h4>
+    				</div>
+    				<div id="collapse5" class="panel-collapse collapse">
+				    	<div class="panel-body"><div class="row">
+					<div class="col-md-8">
+					<h2>Les escales : </h2>
+						<?php 
+						$this->DAO = new DAO();
+						$navires= $this->DAO->getListeNavires();
+						echo '<table class="table table-striped table-bordered">';
+						echo '<tr><th>ID</th><th>NOM</th><th>EVP</th><th>Id Compagnie</th></tr>';
+						foreach ($navires as $navire) {
+							echo '<tr><td>'.$navire->getId().'</td><td>'.$navire->getNom().'</td><td>'.$navire->getEVP().'</td><td>'.$navire->getIdComp().'</td></tr>';
+						}
+
+
+						?>
+						</table>
+					</div>
+					<div class="col-md-4">						
+						<form class="add" method="post" action="index.php">
+							<h2>Ajouter un navire</h2>
+								<div class="form-group">
+									<input type="hidden" name="add_navire">
+								</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">Nom</label>
+							    	<input type="text" class="form-control" placeholder="Nom" name="nom" required>
+							  	</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">EVP</label>
+							    	<input type="text" class="form-control" placeholder="EVP" name="evp" required>
+							  	</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">ID Compagnie</label>
+							    	<input type="text" class="form-control" placeholder="ID Compagnie" name="id_comp" required>
+							  	</div>						  
+							  <button type="submit" class="btn btn-default">Envoyer</button>
+							</form>
+					</div>
+				</div>
+				      	</div>
+				    </div>
+				</div>
+			
+		</div>
 
 			</div>	
 			<?php

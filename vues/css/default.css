@@ -160,10 +160,7 @@ h1, h2, h3, h4 {
 	margin-bottom: 3em;
 }
 
-.row {
-	margin-top:3em;
-	margin-bottom:3em;
-}
+
 
 .container[role=main] {
 	margin-top:3em;
@@ -222,4 +219,8 @@ table a {
 	color: #000;
 	text-align: left;
 	font-weight: 100;
+}
+
+.panel-collapse h2 {
+	color: #000;
 }
