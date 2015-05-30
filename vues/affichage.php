@@ -499,11 +499,11 @@ require_once 'includes/nav.php';
 					<h2>Les escales : </h2>
 						<?php 
 						$this->DAO = new DAO();
-						$navires= $this->DAO->getListeNavires();
+						$escales= $this->DAO->getListeEscales();
 						echo '<table class="table table-striped table-bordered">';
-						echo '<tr><th>ID</th><th>NOM</th><th>EVP</th><th>Id Compagnie</th></tr>';
-						foreach ($navires as $navire) {
-							echo '<tr><td>'.$navire->getId().'</td><td>'.$navire->getNom().'</td><td>'.$navire->getEVP().'</td><td>'.$navire->getIdComp().'</td></tr>';
+						echo '<tr><th>ID</th><th>Date entrée</th><th>Date Sortie</th><th>Id Navire</th></tr>';
+						foreach ($escales as $escale) {
+							echo '<tr><td>'.$escale->getId().'</td><td>'.$escale->getDateEntree().'</td><td>'.$escale->getDateSortie().'</td><td>'.$escale->getIdNav().'</td></tr>';
 						}
 
 
@@ -512,21 +512,21 @@ require_once 'includes/nav.php';
 					</div>
 					<div class="col-md-4">						
 						<form class="add" method="post" action="index.php">
-							<h2>Ajouter un navire</h2>
+							<h2>Ajouter une escale</h2>
 								<div class="form-group">
 									<input type="hidden" name="add_navire">
 								</div>
 							  	<div class="form-group">
-							    	<label for="exampleInputEmail1">Nom</label>
-							    	<input type="text" class="form-control" placeholder="Nom" name="nom" required>
+							    	<label for="exampleInputEmail1">ID Nav</label>
+							    	<input type="text" class="form-control" placeholder="id nav" name="id_nav" required>
 							  	</div>
 							  	<div class="form-group">
-							    	<label for="exampleInputEmail1">EVP</label>
-							    	<input type="text" class="form-control" placeholder="EVP" name="evp" required>
+							    	<label for="exampleInputEmail1">Date entrée</label>
+							    	<input type="text" class="form-control" placeholder="Date entrée" name="date_entree" required>
 							  	</div>
 							  	<div class="form-group">
-							    	<label for="exampleInputEmail1">ID Compagnie</label>
-							    	<input type="text" class="form-control" placeholder="ID Compagnie" name="id_comp" required>
+							    	<label for="exampleInputEmail1">Date Sortie</label>
+							    	<input type="text" class="form-control" placeholder="Date sortie" name="date_sortie" required>
 							  	</div>						  
 							  <button type="submit" class="btn btn-default">Envoyer</button>
 							</form>
