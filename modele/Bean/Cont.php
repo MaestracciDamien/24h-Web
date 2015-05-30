@@ -10,7 +10,7 @@ class Cont{
 	// Constructeur de la classe
 	public function __construct($i, $e, $idC){
 		$this->id = $i;
-		$this->evp = $n;
+		$this->evp = $e;
 		$this->idClient = $idC;
 	}
 

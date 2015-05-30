@@ -491,6 +491,53 @@ class Dao
 		return $res;
 	}
 
+	public function getClientByUserId($id){
+		$res = null;
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try {
+		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_CLIENT WHERE ID_USER = ?');
+	    	$navire->execute(array($id));	    	
+	    	if($donnees = $navire->fetch()){
+	    		$res = new Client(
+						$donnees['ID'], 
+						$donnees['NOM']
+					);
+	    	}	
+		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
+	}
+
+	public function getContByClient($id) {
+		$res = array();
+		try{
+			$this->connexion();
+		}catch (ConnexionException $e){
+			print($e->afficher());
+		}
+		try {
+		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_CONT WHERE ID_CLIENT = ?');
+	    	$navire->execute(array($id));	    	
+	    	if($donnees = $navire->fetch()){
+	    		$res[] = new Cont(
+						$donnees['ID'], 
+						$donnees['EVP'],
+						$donnees['ID_CLIENT']
+					);
+	    	}	
+		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
+	}
+
 
 	function getTotalChargesByEscale($escaleId) {
 		$res = [0,0];
