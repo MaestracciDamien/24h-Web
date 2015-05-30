@@ -160,6 +160,16 @@ h1, h2, h3, h4 {
 	margin-bottom: 3em;
 }
 
+.row {
+	margin-top:3em;
+	margin-bottom:3em;
+}
+
+.container[role=main] {
+	margin-top:3em;
+	margin-bottom:3em;
+}
+
 label {
 	color: white;
 }
@@ -192,4 +202,24 @@ table a {
 	color: black;
 	font-weight: bold;
 	text-decoration: underline;
+}
+
+.add {
+	background-color: white;
+	width: auto;
+	height: auto;
+	padding: 2em;
+	color: #000;
+	text-align: left;
+}
+
+.add h2 {
+	color: #000;
+	text-align: center;
+}
+
+.add label {
+	color: #000;
+	text-align: left;
+	font-weight: 100;
 }

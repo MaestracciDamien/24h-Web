@@ -287,10 +287,85 @@ require_once 'includes/nav.php';
 			include 'includes/head.php';
 			$this->nav->navbar();
 			?>
-			<div class="main clearfix">
+			<div class="container" role="main">
 				<h1>Votre interface de gestion Agent</h1>
-				
-			</div>
+				<div class="row">
+					<div class="col-md-8">
+						<h2>Les utilisateurs : </h2>
+						<?php 
+						$this->DAO = new DAO();
+						$users= $this->DAO->getListeUsers();
+						echo '<table class="table table-striped table-bordered">';
+						echo '<tr><th>ID</th><th>Login</th><th>Mot de passe</th><th>Type</th></tr>';
+						foreach ($users as $user) {
+							echo '<tr><td>'.$user->getId().'</td><td>'.$user->getLogin().'</td><td>'.$user->getMdp().'</td><td>'.$user->getType().'</td></tr>';
+						}
+
+
+						?>
+						</table>
+					</div>
+					<div class="col-md-4">						
+						<form class="add" method="post" action="index.php">
+							<h2>Ajouter un utilisateur</h2>
+								<div class="form-group">
+									<input type="hidden" name="add_user">
+								</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">Login</label>
+							    	<input type="text" class="form-control" placeholder="Login" name="login" required>
+							  	</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">Mot de passe</label>
+							    	<input type="password" class="form-control" placeholder="Mot de passe" name="mdp" required>
+							  	</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">Type</label>
+							    	<select class="form-control" placeholder="Type" name="type" required>
+							    	<option value="1">Compagnie</option>
+							    	<option value="2">Client</option>
+							    	<option value="3">Agent</option>
+							    	</select>
+							  	</div>							  
+							  <button type="submit" class="btn btn-default">Envoyer</button>
+							</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<h2>Les compagnies : </h2>
+						<?php 
+						$this->DAO = new DAO();
+						$compagnies= $this->DAO->getListeComp();
+						echo '<table class="table table-striped table-bordered">';
+						echo '<tr><th>ID</th><th>NOM</th><th>Adresse</th><th>Pays</th></tr>';
+						foreach ($compagnies as $compagnie) {
+							echo '<tr><td>'.$compagnie->getId().'</td><td>'.$compagnie->getNom().'</td><td>'.$compagnie->getAdresse().'</td><td>'.$compagnie->getPays().'</td></tr>';
+						}
+
+
+						?>
+						</table>
+					</div>
+					<div class="col-md-4">						
+						<form class="add" method="post" action="index.php">
+							<h2>Ajouter une compagnie</h2>
+								<div class="form-group">
+									<input type="hidden" name="add_comp">
+								</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">Login</label>
+							    	<input type="text" class="form-control" placeholder="Login" name="login" required>
+							  	</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">Mot de passe</label>
+							    	<input type="password" class="form-control" placeholder="Mot de passe" name="mdp" required>
+							  	</div>						  
+							  <button type="submit" class="btn btn-default">Envoyer</button>
+							</form>
+					</div>
+				</div>
+			</div>	
 			<?php
 			include 'includes/footer.php';
 			include 'includes/script.php';
