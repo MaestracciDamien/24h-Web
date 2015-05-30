@@ -86,7 +86,7 @@ class Dao
 			print($e->afficher());
 		}
 		try{
-			$add = $this->connexion->prepare('INSERT INTO 24H_NAVIRE (EVP, NOM, ID_COMP) VALUES (?, ?, ?, ?)');
+			$add = $this->connexion->prepare('INSERT INTO 24H_NAVIRE (EVP, NOM, ID_COMP) VALUES (?, ?, ?)');
 	    	$add->execute(array($evp,$nom,$id_comp));   	
 		}catch (TableAccesException $e){
 			print($e->afficher());
