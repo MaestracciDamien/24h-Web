@@ -237,6 +237,8 @@ require_once 'includes/nav.php';
 				$this->DAO = new DAO();
 				$compagnie = $this->DAO->getCompByUserId($_SESSION["id"]);
 				$navires = $this->DAO->getListeNaviresCompagnie($compagnie->getId());
+				echo '<h3>Votre compagnie : '.$compagnie->getNom().'</h3>';
+				echo '<h4>Vos navires :</h4>';
 				echo '<table class="table table-striped table-bordered">';
 				echo '<tr><th>ID</th><th>Nom</th><th>EVP</th></tr>';
 				foreach ($navires as $navire) {
@@ -259,6 +261,13 @@ require_once 'includes/nav.php';
 			?>
 			<div class="main clearfix">
 				<h1>Votre interface de gestion Client</h1>
+				<?php
+				$this->DAO = new DAO();
+				$client = $this->DAO->getClientByUserId($_SESSION["id"]);
+				echo '<h3>Vous êtes :  : '.$client->getNom().'</h3>';
+				echo '<h4>Vos conteneurs :</h4>';
+				
+				?>
 				
 			</div>
 			<?php
