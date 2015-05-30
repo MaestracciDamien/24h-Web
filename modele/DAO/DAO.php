@@ -492,5 +492,31 @@ class Dao
 	}
 
 
+	function getTotalChargesByEscale($escaleId) {
+		$res = [0,0];
+		try {
+			$this->connection();
+		}catch(ConnexionException $e) {
+			print($e->afficher());
+		}
+		try {
+			$req = $this->connexion->prepare('SELECT SUM(c.EVP) as s FROM 24H_CHARGE a, 24H_CONT c WHERE a.DECHARGE = 0 AND a.ID_ESCALE = :id_escale AND a.ID_CONT = c.ID');
+			$req->execute(array('id_escale' => $escaleId));
 
+			if($data = $req->fetch()) {
+				$res[0] = $data['s'];
+			}
+
+			$req = $this->connexion->prepare('SELECT SUM(c.EVP) as s FROM 24H_CHARGE a, 24H_CONT c WHERE a.DECHARGE = 1 AND a.ID_ESCALE = :id_escale AND a.ID_CONT = c.ID');
+			$req->execute(array('id_escale' => $escaleId));
+
+			if($data = $req->fetch()) {
+				$res[1] = $data['s'];
+			}
+		} catch(TableAccesException $e) {
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
+	}
 }
