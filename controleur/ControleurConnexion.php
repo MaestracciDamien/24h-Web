@@ -17,4 +17,8 @@ class ControleurConnexion{
 			$_SESSION['type'] = $user->getType();
 		}
 	}
+
+	public function deconnexion() {
+		session_destroy();
+	}
 }
