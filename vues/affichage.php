@@ -1,11 +1,19 @@
 <?php
+require_once 'includes/nav.php';
 
 	class affichage
 	{
+		private $nav;
+
+		function __construct()
+		{		
+			$this->nav = new Nav();
+		}
+
 		function index()
 		{
 			include 'includes/head.php';
-			include 'includes/nav.php';
+			$this->nav->navbar();
 			?>
 			<div class="main clearfix">
 				<h1>Outil de gestion portuaire du Havre</h1>
@@ -38,7 +46,7 @@
 		function inscription_comp() {
 
 			include 'includes/head.php';
-			include 'includes/nav.php';
+			$this->nav->navbar();
 			?>
 			<div class="main clearfix">
 				<h1><i class="fa fa-ship"></i> Inscription d'une compagnie</h1>
@@ -76,7 +84,7 @@
 		function inscription_client() {
 
 			include 'includes/head.php';
-			include 'includes/nav.php';
+			$this->nav->navbar();
 			?>
 			<div class="main clearfix">
 				<h1><i class="fa fa-users"></i> Inscription d'un client</h1>
@@ -106,7 +114,7 @@
 		function inscription_agent() {
 
 			include 'includes/head.php';
-			include 'includes/nav.php';
+			$this->nav->navbar();
 			?>
 			<div class="main clearfix">
 				<h1><i class="fa fa-shield"></i>  Inscription d'un agent</h1>
@@ -137,7 +145,7 @@
 		function connect() {
 
 			include 'includes/head.php';
-			include 'includes/nav.php';
+			$this->nav->navbar();
 			?>
 			<div class="main clearfix">
 				<div class="row">
@@ -171,7 +179,7 @@
 		function genereVueNavire($navire) {
 
 			include 'includes/head.php';
-			include 'includes/nav.php';
+			$this->nav->navbar();
 			?>
 			<div class="main clearfix">
 				<div class="row">
