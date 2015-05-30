@@ -485,7 +485,7 @@ class Dao
 		}
 
 		try {
-			$users = $this->connexion->query('SELECT * FROM 24H_USER');
+			$users = $this->connexion->query('SELECT * FROM 24H_USERS');
 			while($donnees = $users->fetch()) {
 				$res[] = new Users(
 					$donnees['ID'],
