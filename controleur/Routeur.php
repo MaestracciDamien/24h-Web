@@ -5,6 +5,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 	require_once "vues/affichage.php";
 	require_once "controleur/controleurNavire.php";
 	require_once "controleur/ControleurConnexion.php";
+	require_once "controleur/ControleurAdd.php";
 	require_once "modele/DAO/DAO.php";
 
 
@@ -14,6 +15,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 		private $affichage;
 		private $ctrlNavire;
 		private $ctrlConnect;
+		private $ctrlAdd;
 
 
 		function __construct()
@@ -21,6 +23,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 			$this->affichage = new affichage();	
 			$this->ctrlNavire = new ControleurNavire();
 			$this->ctrlConnect = new ControleurConnexion();
+			$this->ctrlAdd = new ControleurAdd();
 		}
 
 		public function router()
@@ -70,6 +73,11 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 
 			elseif (isset($_GET["deconnect"])) {
 				$this->ctrlConnect->deconnexion();
+				$this->affichage->index();
+			}
+
+			elseif (isset($_POST["add_comp"])) {
+				$this->ctrlAdd->addComp();
 				$this->affichage->index();
 			}
 
