@@ -266,6 +266,12 @@ require_once 'includes/nav.php';
 				$client = $this->DAO->getClientByUserId($_SESSION["id"]);
 				echo '<h3>Vous êtes :  : '.$client->getNom().'</h3>';
 				echo '<h4>Vos conteneurs :</h4>';
+				$conteneurs = $this->DAO->getContByClient($client->getId());
+				echo '<table class="table table-striped table-bordered">';
+				echo '<tr><th>ID</th><th>EVP</th></tr>';
+				foreach ($conteneurs as $conteneur) {
+					echo '<tr><td>'.$conteneur->getId().'</td><td>'.$conteneur->getEVP().'</td></tr>';
+				}
 				
 				?>
 				
