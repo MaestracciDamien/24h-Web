@@ -26,4 +26,10 @@ class ControleurAdd{
 			$this->dao->addNavire($_POST['nom'],$_POST['evp'],$_POST['id_comp']);
 		}
 	}
+
+	public function addEscale() {
+		if (isset($_POST['id_nav']) && isset($_POST['date_entree']) && isset($_POST['date_sortie'])) {
+			$this->dao->addNavire($_POST['id_nav'],$_POST['date_entree'],$_POST['date_sortie']);
+		}
+	}
 }

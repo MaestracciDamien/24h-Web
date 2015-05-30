@@ -9,7 +9,7 @@ class Escale{
 
 
 	// Constructeur de la classe
-	public function __construct($i, $in, $dateE, $dateS){
+	public function __construct($i, $n, $dateE, $dateS){
 		$this->id = $i;
 		$this->idNav = $n;
 		$this->dateEntree = $dateE;

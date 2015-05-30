@@ -91,6 +91,11 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 				$this->affichage->index();
 			}
 
+			elseif (isset($_POST["add_escale"])) {
+				$this->ctrlAdd->addEscale();
+				$this->affichage->index();
+			}
+
 			else{
 				$this->affichage->index();
 			}

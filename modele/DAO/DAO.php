@@ -204,6 +204,28 @@ class Dao
 		return $res;
 	}
 
+	public function getListeEscales() {
+		$res = [];
+		try {
+			$this->connexion();
+		} catch(ConnexionException $e) {
+			print($e->afficher());
+		}
+		try {
+			$escs = $this->connexion->query('SELECT * FROM 24H_ESCALE');
+			while ($data = $escs->fetch()) {
+				$ret[] = new Escale($data['ID'],
+					$data['ID_NAV'],
+					$data['DATE_ENTREE'],
+					$data['DATE_SORTIE']);
+			}
+		} catch (TableAccesException $e) {
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
+	}
+
 	public function getListeNavires(){
 		$res = array();
 		try{
@@ -291,6 +313,21 @@ class Dao
 			$add = $this->connexion->prepare('INSERT INTO 24H_CLIENT (ID, NOM) VALUES (?, ?)');
 	    	$add->execute(array($id,$nom));   	
 		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+	}
+
+	public function addEscale($idNav,$dateEntree,$dateSortie) {
+		try {
+			$this->connexion();
+		} catch (ConnexionException $e) {
+			print($e->afficher());
+		}
+		try {
+			$add = $this->connexion->prepare('INSERT INTO 24H_ESCALE (ID_NAV,DATE_ENTREE,DATE_SORTIE) VALUES (?, ?, ?)');
+			$add->execute(array($idNav,$dateEntree,$dateSortie));
+		} catch(TableAccesException $e) {
 			print($e->afficher());
 		}
 		$this->deconnexion();
