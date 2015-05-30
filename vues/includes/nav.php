@@ -41,7 +41,7 @@ class Nav{
             <li> <input type="text" name="mdp"></li>
             <li> <input type="submit" text="Envoyer"></li>
           </form>
-        <?php
+<?php
       }else{
 ?>
         <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?= $_SESSION['pseudo'] ?></p>
