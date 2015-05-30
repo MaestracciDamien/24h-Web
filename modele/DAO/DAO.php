@@ -179,19 +179,6 @@ class Dao
 			$add = $this->connexion->prepare('INSERT INTO 24H_COMP (nom, adresse, pays) 
 				VALUES (?, ?, ?)');
 	    	$add->execute(array($nom, $adresse, $pays));   	
-		  	$navire = $this->connexion->prepare('SELECT * FROM 24H_NAVIRE WHERE ID = ?');
-	    	$navire->execute(array($id));	    	
-	    	if($donnees = $navire->fetch()){
-	    		$res = new Navire(
-						$donnees['ID'], 
-						$donnees['NOM'], 
-						$donnees['EVP'], 
-						$donnees['ID_COMP'] 
-					);
-	    	}			
-			$add = $this->connexion->prepare('INSERT INTO 24H_COMP (nom, adresse, pays) 
-				VALUES (?, ?, ?)');
-	    	$add->execute(array($nom, $adresse, $pays));
 		}catch (TableAccesException $e){
 			print($e->afficher());
 		}
@@ -483,6 +470,30 @@ class Dao
 					));
 			}
 		}catch (TableAccesException $e){
+			print($e->afficher());
+		}
+		$this->deconnexion();
+		return $res;
+	}
+
+	public function getListeUsers() {
+		$res = [];
+		try {
+			$this->connexion();
+		} catch(ConnexionException $e) {
+			print($e->afficher());
+		}
+
+		try {
+			$users = $this->connexion->query('SELECT * FROM 24H_USER');
+			while($donnees = $users->fetch()) {
+				$res[] = new Users(
+					$donnees['ID'],
+					$donnees['LOGIN'],
+					$donnees['MDP'],
+					$donnees['TYPE']);
+			}
+		}catch(TableAccesException $e) {
 			print($e->afficher());
 		}
 		$this->deconnexion();
