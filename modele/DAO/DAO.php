@@ -212,10 +212,10 @@ class Dao
 			$comps = $this->connexion->query('SELECT * FROM 24H_COMP');
 			while($donnees = $comps->fetch()) {
 				$res[] = new Comp(
-	    				$tabComp['ID'], 
-						$tabComp['NOM'], 
-						$tabComp['ADRESSE'], 
-						$tabComp['PAYS']
+	    				$donnees['ID'], 
+						$donnees['NOM'], 
+						$donnees['ADRESSE'], 
+						$donnees['PAYS']
 					);
 			}
 		} catch (TableAccesException $e) {
