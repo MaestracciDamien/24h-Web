@@ -83,7 +83,7 @@
 				<div class="row">
 						<div class="col-md-4 text-center"></div>
 						<div class="col-md-4 text-center">
-							<form method="post" action="">
+							<form method="post" action="index.php">
 								<div class="form-group">
 								<input type="hidden" name="inscription" value="2">
 								</div>
@@ -113,7 +113,7 @@
 				<div class="row">
 						<div class="col-md-4 text-center"></div>
 						<div class="col-md-4 text-center">
-							<form method="post" action="">
+							<form method="post" action="index.php">
 								<div class="form-group">
 								<input type="hidden" name="inscription" value="3">
 								</div>
