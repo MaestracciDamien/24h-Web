@@ -161,7 +161,7 @@ require_once 'includes/nav.php';
 		function connect() {
 
 			include 'includes/head.php';
-			$this->nav->navbar();
+		//	$this->nav->navbar();
 			?>
 			<div class="main clearfix">
 				<div class="row">
@@ -181,13 +181,14 @@ require_once 'includes/nav.php';
 							    	<input type="password" class="form-control" placeholder="Mot de passe" name="mdp" required>
 							  	</div>						  
 							  <button type="submit" class="btn btn-default">Envoyer</button>
+							  <a href="index.php">Retour</a>
 							</form>
 						</div>
 					<div class="col-md-4 text-center"></div>
 				</div>
 			</div>
 			<?php
-			include 'includes/footer.php';
+		//	include 'includes/footer.php';
 			include 'includes/script.php';
 			include 'includes/foot.php';
 		}

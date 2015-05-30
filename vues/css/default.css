@@ -225,3 +225,6 @@ table a {
 	color: #000;
 }
 
+.connect a {
+	text-decoration: underline;
+}
