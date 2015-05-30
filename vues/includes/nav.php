@@ -44,7 +44,8 @@ class Nav{
 <?php
       }else{
 ?>
-        <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?= $_SESSION['pseudo'] ?></p>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $_SESSION['pseudo'] ?><span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu"><a href="?deconnect">Se déconnecter</a></ul>
 <?php
       }
 ?>
