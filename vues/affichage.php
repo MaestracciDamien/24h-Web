@@ -359,12 +359,16 @@ require_once 'includes/nav.php';
 							  	</div>
 							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">Adresse</label>
-							    	<input type="password" class="form-control" placeholder="Adresse" name="adresse" required>
+							    	<input type="text" class="form-control" placeholder="Adresse" name="adresse" required>
 							  	</div>
 							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">Pays</label>
-							    	<input type="password" class="form-control" placeholder="Pays" name="pays" required>
-							  	</div>						  						  
+							    	<input type="text" class="form-control" placeholder="Pays" name="pays" required>
+							  	</div>
+							  	<div class="form-group">
+							    	<label for="exampleInputEmail1">ID User</label>
+							    	<input type="text" class="form-control" placeholder="ID User" name="id_user" required>
+							  	</div>							  						  
 							  <button type="submit" class="btn btn-default">Envoyer</button>
 							</form>
 					</div>
