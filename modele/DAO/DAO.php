@@ -79,15 +79,15 @@ class Dao
 	}
 
 
-	public function addNavire($id,$nom,$evp,$id_comp){
+	public function addNavire($nom,$evp,$id_comp){
 		try{
 			$this->connexion();
 		}catch (ConnexionException $e){
 			print($e->afficher());
 		}
 		try{
-			$add = $this->connexion->prepare('INSERT INTO 24H_NAVIRE (ID, EVP, NOM, ID_COMP) VALUES (?, ?, ?, ?)');
-	    	$add->execute(array($id,$evp,$nom,$id_comp));   	
+			$add = $this->connexion->prepare('INSERT INTO 24H_NAVIRE (EVP, NOM, ID_COMP) VALUES (?, ?, ?, ?)');
+	    	$add->execute(array($evp,$nom,$id_comp));   	
 		}catch (TableAccesException $e){
 			print($e->afficher());
 		}

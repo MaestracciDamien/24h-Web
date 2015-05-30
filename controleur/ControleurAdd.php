@@ -20,4 +20,10 @@ class ControleurAdd{
 			$this->dao->addComp($_POST['nom'],$_POST['adresse'],$_POST['pays'],$_POST['id_user']);
 		}
 	}
+
+	public function addNavire() {
+		if (isset($_POST['nom']) && isset($_POST['evp']) && isset($_POST['id_comp'])) {
+			$this->dao->addNavire($_POST['nom'],$_POST['evp'],$_POST['id_comp']);
+		}
+	}
 }
