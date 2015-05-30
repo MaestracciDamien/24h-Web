@@ -313,7 +313,7 @@ require_once 'includes/nav.php';
 								</div>
 							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">Login</label>
-							    	<input type="text" class="form-control" placeholder="Login" name="login" required>
+							    	<input type="text" class="form-control" placeholder="Login" name="pseudo" required>
 							  	</div>
 							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">Mot de passe</label>
