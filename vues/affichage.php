@@ -540,6 +540,43 @@ require_once 'includes/nav.php';
 			include 'includes/script.php';
 			include 'includes/foot.php';
 		}
+
+
+		function about()
+		{
+			if(isset($_SESSION["pseudo"])) {
+					
+				if($_SESSION["type"] == 1) {
+					$this->index_comp();
+				}
+				elseif($_SESSION["type"] == 2) {
+					$this->index_client();
+				}
+				elseif($_SESSION["type"] == 3) {
+					$this->index_agent();
+				}	
+			}				
+
+			else {
+
+				include 'includes/head.php';
+				$this->nav->navbar();
+				?>
+				<div class="main clearfix">
+					<h1>A propos</h1>
+					<p>Cette application a été créer par l'équipe #WeLeakedGOT (Iut Nantes) dans le cadre des 24h des IUT Informatique du Havre 2015</p>
+					<h2>Choix technologiques</h2>
+					<p>Nous avons utiliser un modèle MVC, mais nous n'avons pas utiliser de framework (chaque membre de l'équipe maitrisait un framework différent, il y aurait pu avoir rapidement des conflits). Nous avons utlisé bootstrap pour la simplicité de mise en place d'un design sobre élégant et responsiv. Mais nous n'avons pas utilisé de thème déjà existant en téléchagement. Nous avons un index php qui reçoit toutes les requêtes get / post qui les renvoit vers notre routeur qui appelle les constructeurs selon les requêtes qu'il reçoit.</p>
+					<p>Nous n'utilions pas (ou presque) de Javascript (sauf pour le choix des dates pour l'uniformisation du format), malgré que nous aurions souhaité l'intégrer, mais le manque de temps nous la empêché.</p>
+					<p>Nous avons utilisé un dépot GitHub tout au long de cette épreuve afin de versionné et créé des branches selon la répartition des tâches au sein de l'équipe</p>
+					</div>
+					<?php
+					include 'includes/footer.php';
+					include 'includes/script.php';
+					include 'includes/foot.php';
+			}
+		}
+
 		
 	}
 ?>

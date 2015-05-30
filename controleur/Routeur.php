@@ -101,6 +101,10 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 				$this->affichage->index();
 			}
 
+			elseif(isset($_GET["about"])) {
+				$this->affichage->about();
+			}
+
 			else{
 				$this->affichage->index();
 			}

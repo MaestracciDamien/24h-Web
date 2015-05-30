@@ -19,9 +19,7 @@ class Nav{
     <!-- Collapse Nav Bar -->
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="index.php">-</a></li>
-      </ul>
+      
 
 
       <!-- Nav Bar Menu Droite -->
@@ -40,12 +38,18 @@ class Nav{
             <li>Mot de passe :</li>
             <li> <input type="password" name="mdp" required></li>
             <li> <input type="submit" text="Envoyer"></li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="?about">A propos</a>
           </form>
 <?php
       }else{
 ?>
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $_SESSION['pseudo'] ?><span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu"><a href="?deconnect">Se déconnecter</a></ul>
+        <ul class="dropdown-menu" role="menu">
+        <li><a href="?deconnect">Se déconnecter</a></li>
+        <li role="presentation" class="divider"></li>
+        <li><a href="?about">A propos</a></li>
+        </ul>
 <?php
       }
 ?>
