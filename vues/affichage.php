@@ -231,7 +231,18 @@ require_once 'includes/nav.php';
 			$this->nav->navbar();
 			?>
 			<div class="main clearfix">
-				<h1>Votre interface de gestion Compagnie</h1>
+				<h1>Votre interface de gestion Compagnie</h1> 
+				<?php
+				$this->DAO = new DAO();
+				$compagnie = $this->DAO->getCompByUserId($_SESSION["id"]);
+				$navires = $this->DAO->getListeNaviresCompagnie($compagnie->getId());
+				echo '<table class="table table-striped table-bordered">';
+				echo '<tr><th>ID</th><th>Nom</th><th>EVP</th></tr>';
+				foreach ($navires as $navire) {
+					echo '<tr><td>'.$navire->getId().'</td><td><a href="?navire='.$navire->getId().'">'.$navire->getNom().'</a></td><td>'.$navire->getEVP().'</td></tr>';
+				}
+				echo '</table>';
+				?>
 				
 			</div>
 			<?php

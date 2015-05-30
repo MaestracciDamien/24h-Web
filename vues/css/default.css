@@ -183,3 +183,13 @@ label {
 	text-align: left;
 	font-weight: 100;
 }
+
+table {
+	background-color: grey;
+}
+
+table a {
+	color: black;
+	font-weight: bold;
+	text-decoration: underline;
+}
